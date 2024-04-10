@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native'; // Added ScrollView import
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import ServiceCard from './ServiceCard';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -13,38 +14,50 @@ const HomePage = () => {
   };
 
   return (
-    <View style={styles.container}>
-      {/* App Logo/Name */}
-      <Text style={styles.logo}>ReviveApp</Text>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <View style={styles.container}>
+        {/* App Logo/Name */}
+        <Text style={styles.logo}>ReviveApp</Text>
 
-      {/* Hamburger Menu */}
-      <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
-        <MaterialCommunityIcons name="menu" size={24} color="black" />
-      </TouchableOpacity>
-
-      {/* Menu Items */}
-      {menuOpen && (
+        {/* Menu Items */}
         <View style={styles.menu}>
-          <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuItemText}>Services</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuItemText}>Profile</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuItemText}>History</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
-            <Text style={styles.menuItemText}>About Us</Text>
-          </TouchableOpacity>
+          {menuOpen && (
+            <>
+              <TouchableOpacity style={styles.menuItem}>
+                <Text style={styles.menuItemText}>Services</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
+                <Text style={styles.menuItemText}>Profile</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
+                <Text style={styles.menuItemText}>History</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
+                <Text style={styles.menuItemText}>About Us</Text>
+              </TouchableOpacity>
+            </>
+          )}
         </View>
-      )}
 
-      {/* Call to Action (CTA) Button */}
-      <TouchableOpacity style={styles.ctaButton}>
-        <Text style={styles.ctaButtonText}>Book Now</Text>
-      </TouchableOpacity>
-    </View>
+        {/* Hamburger Menu */}
+        <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
+          <MaterialCommunityIcons name="menu" size={24} color="black" />
+        </TouchableOpacity>
+
+        {/* Service Cards */}
+        <View style={styles.serviceContainer}>
+          <ServiceCard title="Battery Change" description="Get your car battery replaced quickly." />
+          <ServiceCard title="Fuel Delivery" description="Get fuel delivered to your location." />
+          <ServiceCard title="Tire Change" description="Assistance with changing flat tires." />
+          <ServiceCard title="Towing" description="Get your car towed to a repair shop." />
+        </View>
+
+        {/* Call to Action (CTA) Button */}
+        <TouchableOpacity style={styles.ctaButton}>
+          <Text style={styles.ctaButtonText}>Book Now</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -59,7 +72,7 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 40,
+    marginBottom: 20,
     color: '#007bff',
   },
   menuButton: {
@@ -69,7 +82,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   menu: {
-    marginTop: windowHeight * 0.05,
+    marginTop: 20,
     backgroundColor: '#ffffff',
     borderRadius: 10,
     padding: 10,
@@ -95,6 +108,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333333',
+  },
+  serviceContainer: {
+    marginTop: 20,
+    width: '100%',
   },
   ctaButton: {
     backgroundColor: '#007bff',
