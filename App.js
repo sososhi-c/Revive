@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-import HomePage from './HomePage'; // Import your home page component
+import HomePage from './components/HomePage.js'; // Import your home page component
+import React, { useState, useEffect } from 'react';
 
 const LogoLoadingScreen = () => {
   return (
