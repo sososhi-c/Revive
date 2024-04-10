@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const ServiceCard = ({ title, description }) => {
+const ServiceCard = ({ title, description, imageSource }) => {
   const handleRequest = () => {
     // Handle the request logic here
     console.log(`Request for ${title} service initiated.`);
@@ -9,10 +10,16 @@ const ServiceCard = ({ title, description }) => {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.description}>{description}</Text>
+      <Image source={imageSource} style={styles.image} />
+      <View style={styles.content}>
+        <MaterialCommunityIcons name="toolbox-outline" size={24} color="#007bff" style={styles.icon} />
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.description}>{description}</Text>
+        </View>
+      </View>
       <TouchableOpacity style={styles.requestButton} onPress={handleRequest}>
-        <Text style={styles.requestButtonText}>Request</Text>
+        <Text style={styles.requestButtonText}>Request Service</Text>
       </TouchableOpacity>
     </View>
   );
@@ -33,14 +40,31 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  image: {
+    width: '100%',
+    height: 150,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  textContainer: {
+    flex: 1,
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   description: {
     fontSize: 16,
-    marginBottom: 10,
+    color: '#555',
   },
   requestButton: {
     backgroundColor: '#007bff',
