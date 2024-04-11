@@ -34,11 +34,12 @@ const Menu = ({ isOpen, toggleMenu }) => {
             <MaterialCommunityIcons name="close" size={24} color="black" />
           </TouchableOpacity>
           <View style={styles.menuItemsContainer}>
-            <TouchableOpacity style={styles.menuItem}>
-              <Text style={styles.menuItemText}>Services</Text>
-            </TouchableOpacity>
+            
             <TouchableOpacity style={styles.menuItem}>
               <Text style={styles.menuItemText}>Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem}>
+              <Text style={styles.menuItemText}>Services</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menuItem}>
               <Text style={styles.menuItemText}>History</Text>

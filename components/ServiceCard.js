@@ -10,7 +10,9 @@ const ServiceCard = ({ title, description, imageSource }) => {
 
   return (
     <View style={styles.card}>
-      <Image source={imageSource} style={styles.image} />
+      <View style={styles.imageContainer}>
+        <Image source={imageSource} style={styles.image} resizeMode="cover" />
+      </View>
       <View style={styles.content}>
         <MaterialCommunityIcons name="toolbox-outline" size={24} color="#007bff" style={styles.icon} />
         <View style={styles.textContainer}>
@@ -29,6 +31,8 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#ffffff',
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
     padding: 20,
     marginBottom: 20,
     shadowColor: '#000',
@@ -40,11 +44,15 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  image: {
+  imageContainer: {
     width: '100%',
-    height: 150,
-    borderRadius: 10,
+    alignItems: 'center', // Center the image horizontally
     marginBottom: 10,
+  },
+  image: {
+    width: '70%', // Decreased width to 70%
+    height: 150, // Keep the height as 150
+    borderRadius: 10,
   },
   content: {
     flexDirection: 'row',
@@ -58,12 +66,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: '#333',
   },
   description: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#555',
   },
   requestButton: {

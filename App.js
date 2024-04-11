@@ -31,7 +31,11 @@ const App = () => {
         <LogoLoadingScreen />
       ) : (
         <Stack.Navigator initialRouteName="HomePage">
-          <Stack.Screen name="HomePage" component={HomePage} />
+          <Stack.Screen
+            name="HomePage"
+            component={HomePage}
+            options={{ headerShown: false }} // hide the header for HomePage
+          />
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         </Stack.Navigator>
