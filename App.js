@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './components/HomePage.js';
 import Menu from './components/Menu.js';
 import RegisterScreen from './components/RegisterPage.js';
+import BatteryRequirementForm from './components/BatteryRequirementForm.js';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,7 @@ const App = () => {
           />
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen name="BatteryRequirementForm" component={BatteryRequirementForm} />
         </Stack.Navigator>
       )}
     </NavigationContainer>

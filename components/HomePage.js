@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Carousel from 'react-native-snap-carousel'; // Import Carousel component
 import ServiceCard from './ServiceCard';
 import Menu from './Menu';
+import { useNavigation } from '@react-navigation/native';
 
 // Import images
 import batteryChangeImage from '../assets/battery.webp';
@@ -22,6 +23,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const HomePage = () => {
+  const navigation = useNavigation();
   const [menuOpen, setMenuOpen] = useState(false); // Ensure useState is properly imported
 
   const toggleMenu = () => {
@@ -82,6 +84,7 @@ const HomePage = () => {
             title="Battery Change" 
             description="Get your car battery replaced quickly." 
             imageSource={batteryChangeImage} 
+            navigation={navigation}
           />
           <ServiceCard 
             title="Fuel Delivery" 

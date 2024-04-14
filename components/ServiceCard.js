@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; 
 
-const ServiceCard = ({ title, description, imageSource }) => {
+const ServiceCard = ({ title, description, imageSource, navigation }) => {
   const handleRequest = () => {
     // Handle the request logic here
-    console.log(`Request for ${title} service initiated.`);
+    navigation.navigate('BatteryRequirementForm');
   };
 
   return (
