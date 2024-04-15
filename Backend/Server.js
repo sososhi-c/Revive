@@ -4,6 +4,11 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const authRoutes = require('./Routes/authRoute');
+const fuelRoute = require('./Routes/FuelRoute');
+const batteryRoute = require('./Routes/BatteryRoute');
+const towRoute = require('./Routes/TowRoute');
+const tyreRoute = require('./Routes/TyreRoute');
+
 
 app.use(express.json());
 app.use(cors());
@@ -23,6 +28,10 @@ connectToDB();
 
 // Routes
 app.use('/auth', authRoutes);
+app.use('/fuel', fuelRoute);
+app.use('/battery', batteryRoute);
+app.use('/tow', towRoute);
+app.use('/tyre', tyreRoute);
 
 app.listen(5000, () => {
   console.log(`Server is running on port 5000`);

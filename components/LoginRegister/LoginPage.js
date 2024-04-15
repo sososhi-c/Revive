@@ -84,6 +84,8 @@ const LoginScreen = () => {
                                         placeholderTextColor="#A0AEC0"
                                         value={email}
                                         onChangeText={setEmail}
+                                        keyboardType="email-address"
+
                                     />
                                 </View>
 

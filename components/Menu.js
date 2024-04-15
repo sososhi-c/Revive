@@ -8,7 +8,7 @@ const windowWidth = Dimensions.get('window').width;
 
 const Menu = ({ isOpen, toggleMenu }) => {
   const menuAnimation = useRef(new Animated.Value(-windowWidth)).current;
-const navigation = useNavigation();
+  const navigation = useNavigation();
 
   useEffect(() => {
     Animated.timing(menuAnimation, {
@@ -26,7 +26,17 @@ const navigation = useNavigation();
     closeMenu(); // Close menu before navigating
     navigation.navigate('FrontScreen');
   };
-  
+
+  const navigateToHistory = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('HistoryPage');
+  };
+
+  const navigateToFeedback = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('Feedback'); // Navigate to the About Us page
+  };
+
   const navigateToAboutUs = () => {
     closeMenu(); // Close menu before navigating
     navigation.navigate('AboutUsPage'); // Navigate to the About Us page
@@ -50,7 +60,7 @@ const navigation = useNavigation();
             <MaterialCommunityIcons name="close" size={24} color="black" />
           </TouchableOpacity>
           <View style={styles.menuItemsContainer}>
-            
+
             <TouchableOpacity style={styles.menuItem}>
               <FontAwesome name="user-circle-o" size={24} color="black" />
               <Text style={styles.menuItemText}>Profile</Text>
@@ -61,9 +71,14 @@ const navigation = useNavigation();
               <Text style={styles.menuItemText}>Services</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToHistory}>
               <FontAwesome name="history" size={24} color="black" />
               <Text style={styles.menuItemText}>History</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToFeedback}>
+              <MaterialIcons name="reviews" size={24} color="black" />
+              <Text style={styles.menuItemText}>Feedback</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.menuItem} onPress={navigateToAboutUs}>
@@ -140,13 +155,11 @@ const styles = StyleSheet.create({
     boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.199)',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    transitionDuration: '.3s',
   },
   sign: {
     alignItems: 'center',
     justifyContent: 'center',
     width: '30%',
-    transitionDuration: '.3s',
   },
   buttonText: {
     fontWeight: 'bold',
@@ -154,7 +167,6 @@ const styles = StyleSheet.create({
     color: 'white',
     width: '70%',
     opacity: 1,
-    transitionDuration: '.3s',
   },
 });
 

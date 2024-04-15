@@ -116,6 +116,8 @@ const RegisterScreen = () => {
                     placeholderTextColor="#A0AEC0"
                     value={email}
                     onChangeText={setEmail}
+                    keyboardType="email-address"
+
                   />
                 </View>
 
@@ -127,6 +129,8 @@ const RegisterScreen = () => {
                     placeholderTextColor="#A0AEC0"
                     value={mobileNo}
                     onChangeText={setMobileNo}
+                    keyboardType="numeric"
+
                   />
                 </View>
 
