@@ -45,9 +45,13 @@ const BatteryRequirementForm = () => {
             value={batteryType}
             onValueChange={setBatteryType}
             items={[
-              { label: 'Lead Acid', value: 'lead_acid' },
-              { label: 'Lithium-ion', value: 'lithium_ion' },
-              { label: 'NiMH', value: 'nimh' },
+              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
+              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
+              { label: 'NiMH Battery', value: 'nimh' },
+              { label: 'VRLA Batteries', value: 'vrla' },
+              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
+              { label: 'Solid-State Battery', value: 'solid_state' },
+              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
             ]}
           />
         </View>
@@ -58,10 +62,16 @@ const BatteryRequirementForm = () => {
             value={batteryBrand}
             onValueChange={setBatteryBrand}
             items={[
-              { label: 'Brand A', value: 'brand_a' },
-              { label: 'Brand B', value: 'brand_b' },
-              { label: 'Brand C', value: 'brand_c' },
+              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
+              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
+              { label: 'NiMH Battery', value: 'nimh' },
+              { label: 'VRLA Batteries', value: 'vrla' },
+              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
+              { label: 'Solid-State Battery', value: 'solid_state' },
+              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
+            
             ]}
+
           />
         </View>
         <View style={styles.formRow}>
