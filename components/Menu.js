@@ -38,6 +38,11 @@ const Menu = ({ isOpen, toggleMenu }) => {
     navigation.navigate('AboutUsPage'); // Navigate to the About Us page
   };
 
+  const navigateToServices = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('ServicesPage'); // Navigate to the ServicesPage
+  };
+
   return (
     <Modal
       animationType="none"
@@ -55,7 +60,7 @@ const Menu = ({ isOpen, toggleMenu }) => {
             <TouchableOpacity style={styles.menuItem}>
               <Text style={styles.menuItemText}>Profile</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToServices}>
               <Text style={styles.menuItemText}>Services</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menuItem}>
