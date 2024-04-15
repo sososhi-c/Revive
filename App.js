@@ -4,8 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './components/HomePage.js';
 import Menu from './components/Menu.js';
-import RegisterScreen from './components/RegisterPage.js';
+import RegisterScreen from './components/LoginRegister/RegisterPage.js';
 import BatteryRequirementForm from './components/BatteryRequirementForm.js';
+import LoginScreen from './components/LoginRegister/LoginPage.js';
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,8 @@ const App = () => {
           />
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+
           <Stack.Screen name="BatteryRequirementForm" component={BatteryRequirementForm} />
         </Stack.Navigator>
       )}

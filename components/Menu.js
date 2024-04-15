@@ -3,11 +3,13 @@
 import React, { useRef, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Dimensions, Modal, Animated } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
 
 const Menu = ({ isOpen, toggleMenu }) => {
   const menuAnimation = useRef(new Animated.Value(-windowWidth)).current;
+  const navigation = useNavigation(); 
 
   useEffect(() => {
     Animated.timing(menuAnimation, {
@@ -19,6 +21,16 @@ const Menu = ({ isOpen, toggleMenu }) => {
 
   const closeMenu = () => {
     toggleMenu();
+  };
+
+  const navigateToLogin = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('LoginScreen');
+  };
+
+  const navigateToRegister = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('RegisterScreen');
   };
 
   return (
@@ -47,10 +59,10 @@ const Menu = ({ isOpen, toggleMenu }) => {
             <TouchableOpacity style={styles.menuItem}>
               <Text style={styles.menuItemText}>About Us</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToLogin}>
               <Text style={styles.menuItemText}>Login</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToRegister}>
               <Text style={styles.menuItemText}>Register</Text>
             </TouchableOpacity>
           </View>
