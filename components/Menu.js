@@ -1,3 +1,5 @@
+// Menu.js
+import AboutUsPage from './AboutUsPage.js'
 import React, { useRef, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Dimensions, Modal, Animated } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons, FontAwesome, AntDesign } from '@expo/vector-icons';
@@ -7,7 +9,7 @@ const windowWidth = Dimensions.get('window').width;
 
 const Menu = ({ isOpen, toggleMenu }) => {
   const menuAnimation = useRef(new Animated.Value(-windowWidth)).current;
-const navigation = useNavigation();
+  const navigation = useNavigation();
 
   useEffect(() => {
     Animated.timing(menuAnimation, {
@@ -26,6 +28,16 @@ const navigation = useNavigation();
     navigation.navigate('FrontScreen');
   };
 
+  const navigateToAboutUs = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('AboutUsPage'); // Navigate to the About Us page
+  };
+
+  const navigateToServices = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('ServicesPage'); // Navigate to the ServicesPage
+  };
+
   return (
     <Modal
       animationType="none"
@@ -39,13 +51,13 @@ const navigation = useNavigation();
             <MaterialCommunityIcons name="close" size={24} color="black" />
           </TouchableOpacity>
           <View style={styles.menuItemsContainer}>
-            
+
             <TouchableOpacity style={styles.menuItem}>
               <FontAwesome name="user-circle-o" size={24} color="black" />
               <Text style={styles.menuItemText}>Profile</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToServices}>
               <MaterialIcons name="miscellaneous-services" size={24} color="black" />
               <Text style={styles.menuItemText}>Services</Text>
             </TouchableOpacity>
@@ -55,7 +67,7 @@ const navigation = useNavigation();
               <Text style={styles.menuItemText}>History</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToAboutUs}>
               <AntDesign name="infocirlce" size={24} color="black" />
               <Text style={styles.menuItemText}>About Us</Text>
             </TouchableOpacity>
