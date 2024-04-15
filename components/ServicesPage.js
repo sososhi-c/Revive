@@ -42,14 +42,15 @@ const ServicesPage = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {services.map((service, index) => (
-        <ServiceCard
-          key={index}
-          title={service.title}
-          description={service.description}
-          imageSource={service.imageSource}
-          formName={service.formName}
-          navigation={navigation}
-        />
+        <View key={index} style={styles.serviceCardContainer}>
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            imageSource={service.imageSource}
+            formName={service.formName}
+            navigation={navigation}
+          />
+        </View>
       ))}
     </ScrollView>
   );
@@ -62,6 +63,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 20,
+  },
+  serviceCardContainer: {
+    width: '90%', // Set the width to 90% of the screen width
+    marginBottom: 20, // Add marginBottom to create space between service cards
   },
 });
 
