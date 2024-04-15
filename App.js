@@ -6,6 +6,9 @@ import HomePage from './components/HomePage.js';
 import Menu from './components/Menu.js';
 import RegisterScreen from './components/RegisterPage.js';
 import BatteryRequirementForm from './components/BatteryRequirementForm.js';
+import FuelRequirementForm from './components/FuelRequirementForm.js';
+import TowRequirementForm from './components/TowRequirementForm.js';
+import TyreReplacementForm from './components/TyreReplacementForm.js';
 
 const Stack = createStackNavigator();
 
@@ -40,6 +43,9 @@ const App = () => {
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name="BatteryRequirementForm" component={BatteryRequirementForm} />
+          <Stack.Screen name="FuelRequirementForm" component={FuelRequirementForm} />
+          <Stack.Screen name="TowRequirementForm" component={TowRequirementForm} />
+          <Stack.Screen name="TyreReplacementForm" component={TyreReplacementForm} />
         </Stack.Navigator>
       )}
     </NavigationContainer>
