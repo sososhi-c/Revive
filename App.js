@@ -10,6 +10,8 @@ import FuelRequirementForm from './components/FuelRequirementForm.js';
 import TowRequirementForm from './components/TowRequirementForm.js';
 import TyreReplacementForm from './components/TyreReplacementForm.js';
 import LoginScreen from './components/LoginRegister/LoginPage.js';
+import AboutUsPage from './components/AboutUsPage.js';
+
 
 const Stack = createStackNavigator();
 
@@ -44,7 +46,7 @@ const App = () => {
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-
+          <Stack.Screen name="AboutUsPage" component={AboutUsPage} />
           <Stack.Screen name="BatteryRequirementForm" component={BatteryRequirementForm} />
           <Stack.Screen name="FuelRequirementForm" component={FuelRequirementForm} />
           <Stack.Screen name="TowRequirementForm" component={TowRequirementForm} />

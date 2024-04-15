@@ -1,5 +1,5 @@
 // Menu.js
-
+import AboutUsPage from './AboutUsPage.js'
 import React, { useRef, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Dimensions, Modal, Animated } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -9,7 +9,7 @@ const windowWidth = Dimensions.get('window').width;
 
 const Menu = ({ isOpen, toggleMenu }) => {
   const menuAnimation = useRef(new Animated.Value(-windowWidth)).current;
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
   useEffect(() => {
     Animated.timing(menuAnimation, {
@@ -33,6 +33,11 @@ const Menu = ({ isOpen, toggleMenu }) => {
     navigation.navigate('RegisterScreen');
   };
 
+  const navigateToAboutUs = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('AboutUsPage'); // Navigate to the About Us page
+  };
+
   return (
     <Modal
       animationType="none"
@@ -46,7 +51,7 @@ const Menu = ({ isOpen, toggleMenu }) => {
             <MaterialCommunityIcons name="close" size={24} color="black" />
           </TouchableOpacity>
           <View style={styles.menuItemsContainer}>
-            
+
             <TouchableOpacity style={styles.menuItem}>
               <Text style={styles.menuItemText}>Profile</Text>
             </TouchableOpacity>
@@ -56,7 +61,7 @@ const Menu = ({ isOpen, toggleMenu }) => {
             <TouchableOpacity style={styles.menuItem}>
               <Text style={styles.menuItemText}>History</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToAboutUs}>
               <Text style={styles.menuItemText}>About Us</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menuItem} onPress={navigateToLogin}>
