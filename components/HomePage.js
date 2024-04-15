@@ -72,34 +72,42 @@ const HomePage = () => {
             layoutCardOffset={18} // Adjust the space between carousel items
           />
         </View>
-        
+
 
         {/* Menu */}
         <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
 
         {/* Service Cards */}
         <View style={styles.serviceContainer}>
-        <Text style={styles.topServicesText}>Top Services</Text>
-          <ServiceCard 
-            title="Battery Change" 
-            description="Get your car battery replaced quickly." 
-            imageSource={batteryChangeImage} 
+          <Text style={styles.topServicesText}>Top Services</Text>
+          <ServiceCard
+            title="Battery Change"
+            description="Get your car battery replaced quickly."
+            imageSource={batteryChangeImage}
+            formName="BatteryRequirementForm" // Specify the correct form name
+            navigation={navigation} // Ensure navigation is passed correctly
+          />
+          <ServiceCard
+            title="Fuel Delivery"
+            description="Get fuel delivered to your location."
+            imageSource={fuelDeliveryImage}
+            formName="FuelRequirementForm" // Specify the correct form name
+            navigation={navigation} // Ensure navigation is passed correctly
+          />
+
+          <ServiceCard
+            title="Tyre Change"
+            description="Assistance with changing flat tires."
+            imageSource={tireChangeImage}
+            formName="TyreReplacementForm" // Specify the correct form name
+            navigation={navigation} 
+          />
+          <ServiceCard
+            title="Towing"
+            description="Get your car towed to a repair shop."
+            imageSource={towingImage}
+            formName="TowRequirementForm" // Specify the correct form name
             navigation={navigation}
-          />
-          <ServiceCard 
-            title="Fuel Delivery" 
-            description="Get fuel delivered to your location." 
-            imageSource={fuelDeliveryImage} 
-          />
-          <ServiceCard 
-            title="Tire Change" 
-            description="Assistance with changing flat tires." 
-            imageSource={tireChangeImage} 
-          />
-          <ServiceCard 
-            title="Towing" 
-            description="Get your car towed to a repair shop." 
-            imageSource={towingImage} 
           />
         </View>
       </View>

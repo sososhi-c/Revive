@@ -1,12 +1,27 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native';
 
-const ServiceCard = ({ title, description, imageSource, navigation }) => {
+const ServiceCard = ({ title, description, imageSource, formName, navigation }) => {
   const handleRequest = () => {
-    // Handle the request logic here
-    navigation.navigate('BatteryRequirementForm');
+    switch (formName) {
+      case 'BatteryRequirementForm':
+        navigation.navigate('BatteryRequirementForm');
+        break;
+      case 'FuelRequirementForm':
+        navigation.navigate('FuelRequirementForm');
+        break;
+      case 'TowRequirementForm':
+        navigation.navigate('TowRequirementForm');
+        break;
+      case 'TyreReplacementForm':
+        navigation.navigate('TyreReplacementForm');
+        break;
+      default:
+        // Default case
+        break;
+    }
   };
 
   return (

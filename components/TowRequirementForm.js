@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
-import BatteryPicker from './BatteryPicker'; // Assuming the file is in the same directory
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
-const BatteryRequirementForm = () => {
+const TowRequirementForm = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [batteryType, setBatteryType] = useState(null);
-  const [batteryBrand, setBatteryBrand] = useState(null);
   const [vehicleModel, setVehicleModel] = useState('');
   const [licensePlate, setLicensePlate] = useState('');
+  const [reasonForTow, setReasonForTow] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
+  const [destination, setDestination] = useState('');
 
-  const handleFormSubmit = () => {
+  const handleSubmit = () => {
     // Handle form submission logic here
+    // You can use the form data as needed
+    console.log('Form submitted:', {
+      fullName,
+      email,
+      vehicleModel,
+      licensePlate,
+      reasonForTow,
+      currentLocation,
+      destination,
+    });
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.heading}>Battery Service Form</Text>
+      <Text style={styles.heading}>Tow Requirement Form</Text>
       <View style={styles.formContainer}>
         <View style={styles.formRow}>
           <Text style={styles.label}>Full Name</Text>
@@ -39,42 +48,6 @@ const BatteryRequirementForm = () => {
           />
         </View>
         <View style={styles.formRow}>
-          <Text style={styles.label}>Battery Type</Text>
-          <BatteryPicker
-            label="Battery Type"
-            value={batteryType}
-            onValueChange={setBatteryType}
-            items={[
-              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
-              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
-              { label: 'NiMH Battery', value: 'nimh' },
-              { label: 'VRLA Batteries', value: 'vrla' },
-              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
-              { label: 'Solid-State Battery', value: 'solid_state' },
-              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
-            ]}
-          />
-        </View>
-        <View style={styles.formRow}>
-          <Text style={styles.label}>Preferred Battery Brand</Text>
-          <BatteryPicker
-            label="Preferred Battery Brand"
-            value={batteryBrand}
-            onValueChange={setBatteryBrand}
-            items={[
-              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
-              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
-              { label: 'NiMH Battery', value: 'nimh' },
-              { label: 'VRLA Batteries', value: 'vrla' },
-              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
-              { label: 'Solid-State Battery', value: 'solid_state' },
-              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
-            
-            ]}
-
-          />
-        </View>
-        <View style={styles.formRow}>
           <Text style={styles.label}>Model of Vehicle</Text>
           <TextInput
             style={styles.input}
@@ -93,6 +66,15 @@ const BatteryRequirementForm = () => {
           />
         </View>
         <View style={styles.formRow}>
+          <Text style={styles.label}>Reason for Tow</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter reason for tow"
+            value={reasonForTow}
+            onChangeText={setReasonForTow}
+          />
+        </View>
+        <View style={styles.formRow}>
           <Text style={styles.label}>Current Location</Text>
           <TextInput
             style={styles.input}
@@ -101,8 +83,17 @@ const BatteryRequirementForm = () => {
             onChangeText={setCurrentLocation}
           />
         </View>
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Destination</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your destination"
+            value={destination}
+            onChangeText={setDestination}
+          />
+        </View>
       </View>
-      <TouchableOpacity onPress={handleFormSubmit} style={styles.button}>
+      <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -114,17 +105,20 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: 20,
     paddingVertical: 40,
+    backgroundColor: '#f9f9f9',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    textAlign: 'center',
   },
   formContainer: {
     backgroundColor: '#fff', // White background color for the form container
     borderRadius: 10,
     padding: 20,
+    width: '100%',
   },
   formRow: {
     marginBottom: 20,
@@ -136,20 +130,23 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '100%',
-    borderColor: 'gray',
+    borderColor: '#ccc',
     borderWidth: 1,
+    borderRadius: 5,
     paddingHorizontal: 10,
   },
   button: {
-    backgroundColor: 'blue',
-    padding: 10,
+    backgroundColor: '#007bff',
+    paddingVertical: 15,
     borderRadius: 5,
     alignItems: 'center',
+    width: '100%',
   },
   buttonText: {
-    color: 'white',
+    color: '#ffffff',
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });
 
-export default BatteryRequirementForm;
+export default TowRequirementForm;

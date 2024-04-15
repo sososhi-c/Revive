@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
-import BatteryPicker from './BatteryPicker'; // Assuming the file is in the same directory
 
-const BatteryRequirementForm = () => {
+const TyreReplacementForm = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [batteryType, setBatteryType] = useState(null);
-  const [batteryBrand, setBatteryBrand] = useState(null);
+  const [numberOfTyres, setNumberOfTyres] = useState('');
   const [vehicleModel, setVehicleModel] = useState('');
   const [licensePlate, setLicensePlate] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
@@ -17,7 +15,7 @@ const BatteryRequirementForm = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.heading}>Battery Service Form</Text>
+      <Text style={styles.heading}>Tyre Replacement Form</Text>
       <View style={styles.formContainer}>
         <View style={styles.formRow}>
           <Text style={styles.label}>Full Name</Text>
@@ -39,39 +37,12 @@ const BatteryRequirementForm = () => {
           />
         </View>
         <View style={styles.formRow}>
-          <Text style={styles.label}>Battery Type</Text>
-          <BatteryPicker
-            label="Battery Type"
-            value={batteryType}
-            onValueChange={setBatteryType}
-            items={[
-              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
-              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
-              { label: 'NiMH Battery', value: 'nimh' },
-              { label: 'VRLA Batteries', value: 'vrla' },
-              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
-              { label: 'Solid-State Battery', value: 'solid_state' },
-              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
-            ]}
-          />
-        </View>
-        <View style={styles.formRow}>
-          <Text style={styles.label}>Preferred Battery Brand</Text>
-          <BatteryPicker
-            label="Preferred Battery Brand"
-            value={batteryBrand}
-            onValueChange={setBatteryBrand}
-            items={[
-              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
-              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
-              { label: 'NiMH Battery', value: 'nimh' },
-              { label: 'VRLA Batteries', value: 'vrla' },
-              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
-              { label: 'Solid-State Battery', value: 'solid_state' },
-              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
-            
-            ]}
-
+          <Text style={styles.label}>Number of Tyres to be Replaced</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter the number of tyres to be replaced"
+            value={numberOfTyres}
+            onChangeText={setNumberOfTyres}
           />
         </View>
         <View style={styles.formRow}>
@@ -122,7 +93,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   formContainer: {
-    backgroundColor: '#fff', // White background color for the form container
+    backgroundColor: '#fff',
     borderRadius: 10,
     padding: 20,
   },
@@ -152,4 +123,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BatteryRequirementForm;
+export default TyreReplacementForm;

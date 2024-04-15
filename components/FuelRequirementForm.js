@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
-import BatteryPicker from './BatteryPicker'; // Assuming the file is in the same directory
+import BatteryPicker from './BatteryPicker'; 
 
-const BatteryRequirementForm = () => {
+const FuelRequirementForm = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [batteryType, setBatteryType] = useState(null);
-  const [batteryBrand, setBatteryBrand] = useState(null);
   const [vehicleModel, setVehicleModel] = useState('');
   const [licensePlate, setLicensePlate] = useState('');
-  const [currentLocation, setCurrentLocation] = useState('');
+  const [fuelAmount, setFuelAmount] = useState('');
+  const [fuelType, setFuelType] = useState(null);
 
   const handleFormSubmit = () => {
     // Handle form submission logic here
@@ -17,7 +16,7 @@ const BatteryRequirementForm = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.heading}>Battery Service Form</Text>
+      <Text style={styles.heading}>Fuel Service Form</Text>
       <View style={styles.formContainer}>
         <View style={styles.formRow}>
           <Text style={styles.label}>Full Name</Text>
@@ -39,42 +38,6 @@ const BatteryRequirementForm = () => {
           />
         </View>
         <View style={styles.formRow}>
-          <Text style={styles.label}>Battery Type</Text>
-          <BatteryPicker
-            label="Battery Type"
-            value={batteryType}
-            onValueChange={setBatteryType}
-            items={[
-              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
-              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
-              { label: 'NiMH Battery', value: 'nimh' },
-              { label: 'VRLA Batteries', value: 'vrla' },
-              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
-              { label: 'Solid-State Battery', value: 'solid_state' },
-              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
-            ]}
-          />
-        </View>
-        <View style={styles.formRow}>
-          <Text style={styles.label}>Preferred Battery Brand</Text>
-          <BatteryPicker
-            label="Preferred Battery Brand"
-            value={batteryBrand}
-            onValueChange={setBatteryBrand}
-            items={[
-              { label: 'Lead Acid Battery Type', value: 'lead_acid' },
-              { label: 'Lithium-ion Battery', value: 'lithium_ion' },
-              { label: 'NiMH Battery', value: 'nimh' },
-              { label: 'VRLA Batteries', value: 'vrla' },
-              { label: 'Sodium-ion Battery', value: 'sodium_ion' },
-              { label: 'Solid-State Battery', value: 'solid_state' },
-              { label: 'Silver Calcium Battery', value: 'silver_calcium' },
-            
-            ]}
-
-          />
-        </View>
-        <View style={styles.formRow}>
           <Text style={styles.label}>Model of Vehicle</Text>
           <TextInput
             style={styles.input}
@@ -93,12 +56,26 @@ const BatteryRequirementForm = () => {
           />
         </View>
         <View style={styles.formRow}>
-          <Text style={styles.label}>Current Location</Text>
+          <Text style={styles.label}>Amount of Fuel Needed (in litres)</Text>
           <TextInput
             style={styles.input}
-            placeholder="Enter your current location"
-            value={currentLocation}
-            onChangeText={setCurrentLocation}
+            placeholder="Enter the amount of fuel needed"
+            value={fuelAmount}
+            onChangeText={setFuelAmount}
+            keyboardType="numeric"
+          />
+        </View>
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Fuel Type</Text>
+          <BatteryPicker
+            label="Fuel Type"
+            value={fuelType}
+            onValueChange={setFuelType}
+            items={[
+              { label: 'Petrol', value: 'petrol' },
+              { label: 'Diesel', value: 'diesel' },
+              { label: 'CNG', value: 'cng' },
+            ]}
           />
         </View>
       </View>
@@ -152,4 +129,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BatteryRequirementForm;
+export default FuelRequirementForm;
