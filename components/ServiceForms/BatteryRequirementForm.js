@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
-import BatteryPicker from './BatteryPicker'; // Assuming the file is in the same directory
+import BatteryPicker from '../BatteryPicker'; // Assuming the file is in the same directory
 
 const BatteryRequirementForm = () => {
   const [fullName, setFullName] = useState('');

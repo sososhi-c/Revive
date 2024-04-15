@@ -1,15 +1,13 @@
-// Menu.js
-
 import React, { useRef, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Dimensions, Modal, Animated } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons, FontAwesome, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
 
 const Menu = ({ isOpen, toggleMenu }) => {
   const menuAnimation = useRef(new Animated.Value(-windowWidth)).current;
-  const navigation = useNavigation(); 
+const navigation = useNavigation();
 
   useEffect(() => {
     Animated.timing(menuAnimation, {
@@ -23,14 +21,9 @@ const Menu = ({ isOpen, toggleMenu }) => {
     toggleMenu();
   };
 
-  const navigateToLogin = () => {
+  const navigateToFront = () => {
     closeMenu(); // Close menu before navigating
-    navigation.navigate('LoginScreen');
-  };
-
-  const navigateToRegister = () => {
-    closeMenu(); // Close menu before navigating
-    navigation.navigate('RegisterScreen');
+    navigation.navigate('FrontScreen');
   };
 
   return (
@@ -48,23 +41,34 @@ const Menu = ({ isOpen, toggleMenu }) => {
           <View style={styles.menuItemsContainer}>
             
             <TouchableOpacity style={styles.menuItem}>
+              <FontAwesome name="user-circle-o" size={24} color="black" />
               <Text style={styles.menuItemText}>Profile</Text>
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.menuItem}>
+              <MaterialIcons name="miscellaneous-services" size={24} color="black" />
               <Text style={styles.menuItemText}>Services</Text>
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.menuItem}>
+              <FontAwesome name="history" size={24} color="black" />
               <Text style={styles.menuItemText}>History</Text>
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.menuItem}>
+              <AntDesign name="infocirlce" size={24} color="black" />
               <Text style={styles.menuItemText}>About Us</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem} onPress={navigateToLogin}>
-              <Text style={styles.menuItemText}>Login</Text>
+
+            <TouchableOpacity style={styles.logoutButton} onPress={navigateToFront}>
+              <View style={styles.btn}>
+                <View style={styles.sign}>
+                  <AntDesign name="logout" size={24} color="white" />
+                </View>
+                <Text style={styles.buttonText}>Logout</Text>
+              </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem} onPress={navigateToRegister}>
-              <Text style={styles.menuItemText}>Register</Text>
-            </TouchableOpacity>
+
           </View>
         </Animated.View>
       </TouchableOpacity>
@@ -98,6 +102,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   menuItem: {
+    flexDirection: 'row',
     paddingVertical: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#ced4da',
@@ -106,6 +111,39 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333333',
+    marginLeft: 20, // Adjust as needed
+  },
+  logoutButton: {
+    marginTop: '60%',
+    alignItems: 'center'
+  },
+  btn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: 125,
+    height: 45,
+    borderRadius: 40,
+    backgroundColor: 'rgb(255, 65, 65)',
+    overflow: 'hidden',
+    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.199)',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    transitionDuration: '.3s',
+  },
+  sign: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '30%',
+    transitionDuration: '.3s',
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'white',
+    width: '70%',
+    opacity: 1,
+    transitionDuration: '.3s',
   },
 });
 

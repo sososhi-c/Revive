@@ -1,3 +1,4 @@
+// HomePage.js
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Dimensions, ScrollView, Image } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
-import BatteryPicker from './BatteryPicker'; 
+import BatteryPicker from '../BatteryPicker'; 
 
 const FuelRequirementForm = () => {
   const [fullName, setFullName] = useState('');
