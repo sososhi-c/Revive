@@ -20,6 +20,7 @@ import TowHistory from './components/History/TowHistory.js';
 import FuelHistory from './components/History/FuelHistory.js';
 import BatteryHistory from './components/History/BatteryHistory.js';
 import Feedback from './components/Feedback.js';
+import ContactPage from './components/ContactPage.js';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +59,7 @@ const App = () => {
           <Stack.Screen name="AboutUsPage" component={AboutUsPage} options={{ headerTitle: '' }} />
           <Stack.Screen name="HistoryPage" component={HistoryPage} options={{ headerTitle: '' }} />
           <Stack.Screen name="Feedback" component={Feedback} options={{ headerTitle: '' }} />
+          <Stack.Screen name="ContactPage" component={ContactPage} options={{ headerTitle: '' }} />
 
           <Stack.Screen name="BatteryRequirementForm" component={BatteryRequirementForm} options={{ headerTitle: '' }} />
           <Stack.Screen name="FuelRequirementForm" component={FuelRequirementForm} options={{ headerTitle: '' }} />

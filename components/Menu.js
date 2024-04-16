@@ -42,6 +42,11 @@ const Menu = ({ isOpen, toggleMenu }) => {
     navigation.navigate('AboutUsPage'); // Navigate to the About Us page
   };
 
+  const navigateToContactUs = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('ContactPage');
+  };
+
   const navigateToServices = () => {
     closeMenu(); // Close menu before navigating
     navigation.navigate('ServicesPage'); // Navigate to the ServicesPage
@@ -61,11 +66,6 @@ const Menu = ({ isOpen, toggleMenu }) => {
           </TouchableOpacity>
           <View style={styles.menuItemsContainer}>
 
-            <TouchableOpacity style={styles.menuItem}>
-              <FontAwesome name="user-circle-o" size={24} color="black" />
-              <Text style={styles.menuItemText}>Profile</Text>
-            </TouchableOpacity>
-
             <TouchableOpacity style={styles.menuItem} onPress={navigateToServices}>
               <MaterialIcons name="miscellaneous-services" size={24} color="black" />
               <Text style={styles.menuItemText}>Services</Text>
@@ -84,6 +84,11 @@ const Menu = ({ isOpen, toggleMenu }) => {
             <TouchableOpacity style={styles.menuItem} onPress={navigateToAboutUs}>
               <AntDesign name="infocirlce" size={24} color="black" />
               <Text style={styles.menuItemText}>About Us</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToContactUs}>
+            <MaterialIcons name="contact-mail" size={24} color="black" />
+              <Text style={styles.menuItemText}>Contact Us</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.logoutButton} onPress={navigateToFront}>
@@ -125,7 +130,7 @@ const styles = StyleSheet.create({
     right: 10,
   },
   menuItemsContainer: {
-    marginTop: 20,
+    marginTop: 40,
   },
   menuItem: {
     flexDirection: 'row',
@@ -140,7 +145,7 @@ const styles = StyleSheet.create({
     marginLeft: 20, // Adjust as needed
   },
   logoutButton: {
-    marginTop: '60%',
+    marginTop: '50%',
     alignItems: 'center'
   },
   btn: {

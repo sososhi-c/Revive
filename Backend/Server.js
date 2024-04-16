@@ -8,7 +8,7 @@ const fuelRoute = require('./Routes/FuelRoute');
 const batteryRoute = require('./Routes/BatteryRoute');
 const towRoute = require('./Routes/TowRoute');
 const tyreRoute = require('./Routes/TyreRoute');
-
+const contactRoute = require('./Routes/ContactRoute');
 
 app.use(express.json());
 app.use(cors());
@@ -32,6 +32,8 @@ app.use('/fuel', fuelRoute);
 app.use('/battery', batteryRoute);
 app.use('/tow', towRoute);
 app.use('/tyre', tyreRoute);
+app.use('/contact', contactRoute);
+
 
 app.listen(5000, () => {
   console.log(`Server is running on port 5000`);

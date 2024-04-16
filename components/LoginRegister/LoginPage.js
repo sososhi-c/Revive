@@ -37,7 +37,7 @@ const LoginScreen = () => {
             }
 
             // clear all fields before navigating
-            setEmail(''),
+                setEmail(''),
                 setPassword(''),
                 setError('')
 
