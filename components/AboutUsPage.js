@@ -1,16 +1,28 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 const AboutUsPage = () => {
+  const navigation = useNavigation();
+
   // Function to handle icon press
   const handleIconPress = (url) => {
     Linking.openURL(url);
+  };
+  
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
   };
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
       <View style={styles.container}>
+        <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+          <Ionicons name="chevron-back-circle" size={40} color="black" />
+        </TouchableOpacity>
+
         <Image source={require('../assets/logo.png')} style={styles.logo} />
         <Text style={styles.heading}>About Us</Text>
         <Text style={styles.paragraph}>
@@ -81,6 +93,13 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     backgroundColor: '#F0F0F0',
     alignItems: 'center',
+    marginTop: 70,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 10,
+    left: 20,
+    zIndex: 1, // Ensure the back button appears above other content
   },
   logo: {
     width: 150,

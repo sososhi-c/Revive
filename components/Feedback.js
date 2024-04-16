@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import email from 'react-native-email';
+import { Ionicons } from '@expo/vector-icons';
+
 
 const Feedback = () => {
     const navigation = useNavigation();
@@ -18,8 +20,16 @@ const Feedback = () => {
         }).catch(console.error);
     };
 
+    const handleGoBack = () => {
+        navigation.goBack(); // Navigate back to the previous screen
+    };
+
     return (
         <View style={styles.endContainer}>
+            <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+                <Ionicons name="chevron-back-circle" size={40} color="black" />
+            </TouchableOpacity>
+            
             <Text style={styles.registerText} >Share Your Feedback ! </Text>
 
             <View style={styles.container}>
@@ -81,14 +91,19 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#bde0fe',
-
     },
     container: {
         width: '100%',
-        height: '35%',
+        height: '45%',
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#bde0fe',
+    },
+    backButton: {
+        position: 'absolute',
+        top: 60,
+        left: 20,
+        zIndex: 1, // Ensure the back button appears above other content
     },
     label: {
         fontSize: 14,
@@ -145,11 +160,10 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
-        marginTop: '0%',
         backgroundColor: '#0077b6', //  blue color
     },
     registerText: {
-        marginTop: '10%',
+        marginTop: '20%',
         fontWeight: 'bold',
         fontSize: 25,
         textAlign: 'center',

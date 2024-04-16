@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const FuelHistory = () => {
+  const navigation = useNavigation();
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
     fetchHistory();
   }, []);
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  };
 
   const fetchHistory = async () => {
     try {
@@ -27,6 +34,10 @@ const FuelHistory = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+        <Ionicons name="chevron-back-circle" size={40} color="black" />
+      </TouchableOpacity>
+      
       <Text style={styles.title}>Fuel History</Text>
       {history.map((item) => (
         <View style={styles.card} key={item._id}>
@@ -52,13 +63,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'linear-gradient(to right, #d1defb, rgb(219, 242, 255))',
-    padding: 10,
+    padding: 20,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    zIndex: 1, // Ensure the back button appears above other content
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     margin: 20,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 75,
   },
   card: {
     backgroundColor: '#fff',

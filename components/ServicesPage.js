@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import ServiceCard from './ServiceCard';
 import { useNavigation } from '@react-navigation/native';
-
+import { Ionicons } from '@expo/vector-icons';
 import batteryChangeImage from '../assets/battery.webp';
 import fuelDeliveryImage from '../assets/fuel.webp';
 import tireChangeImage from '../assets/Tyre.webp';
@@ -10,6 +10,10 @@ import towingImage from '../assets/tow.webp';
 
 const ServicesPage = () => {
   const navigation = useNavigation();
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  };
 
   // Define service card data
   const services = [
@@ -41,6 +45,9 @@ const ServicesPage = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+        <Ionicons name="chevron-back-circle" size={40} color="black" />
+      </TouchableOpacity>
       {services.map((service, index) => (
         <View key={index} style={styles.serviceCardContainer}>
           <ServiceCard
@@ -63,6 +70,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 20,
+    paddingTop: 140
+  },
+  backButton: {
+    position: 'absolute',
+    top: 80,
+    left: 10,
+    zIndex: 1, // Ensure the back button appears above other content
   },
   serviceCardContainer: {
     width: '90%', // Set the width to 90% of the screen width

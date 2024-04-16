@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 const Card = ({ title, subtitle, screen }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -19,6 +20,8 @@ const Card = ({ title, subtitle, screen }) => {
   const handlePressOut = () => {
     setIsHovered(false);
   };
+
+
 
   return (
     <TouchableOpacity
@@ -46,12 +49,21 @@ const Card = ({ title, subtitle, screen }) => {
 };
 
 const HistoryPage = () => {
+  const navigation = useNavigation();
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  };
   return (
+
     <View style={styles.container}>
-      <Card title="View Fuel History" subtitle="All fuel requests"  screen="FuelHistory" />
-      <Card title="View Battery History" subtitle="All battery requests"  screen="BatteryHistory" />
-      <Card title="View Tow History" subtitle="All tow requests"  screen="TowHistory" />
-      <Card title="View Tyre History" subtitle="All tyre requests"  screen="TyreHistory" />
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+        <Ionicons name="chevron-back-circle" size={40} color="black" />
+      </TouchableOpacity>
+      <Card title="View Fuel History" subtitle="All fuel requests" screen="FuelHistory" />
+      <Card title="View Battery History" subtitle="All battery requests" screen="BatteryHistory" />
+      <Card title="View Tow History" subtitle="All tow requests" screen="TowHistory" />
+      <Card title="View Tyre History" subtitle="All tyre requests" screen="TyreHistory" />
     </View>
   );
 };
@@ -62,7 +74,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
-    backgroundColor: '#ffd6ff'
+    backgroundColor: '#ffd6ff',
+  },
+  backButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    zIndex: 1, // Ensure the back button appears above other content
   },
   cardContainer: {
     marginBottom: 30,
@@ -90,7 +108,7 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     marginTop: 15,
 
-},
+  },
   title: {
     textAlign: 'center',
     color: 'white',

@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView, Alert } from 'react-native';
 import axios from 'axios';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const TyreReplacementForm = () => {
+  const navigation = useNavigation();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [numTyreReq, setNumTyreReq] = useState('');
   const [vehicleModel, setVehicleModel] = useState('');
   const [licensePlateNumber, setLicensePlateNumber] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  };
 
   const handleFormSubmit = async () => {
     try {
@@ -54,6 +61,10 @@ const TyreReplacementForm = () => {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
 
       <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+        <Ionicons name="chevron-back-circle" size={40} color="black" />
+      </TouchableOpacity>
+
         <Text style={styles.heading}>Tyre Replacement Form</Text>
         <View style={styles.formContainer}>
           <View style={styles.formRow}>
@@ -129,11 +140,18 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
     backgroundColor: 'linear-gradient(to right, #d1defb, rgb(239, 232, 255))',
   },
+  backButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    zIndex: 1, // Ensure the back button appears above other content
+  },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    marginTop: 60,
   },
   formContainer: {
     backgroundColor: '#fff',
@@ -157,9 +175,9 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#5e60ce',
-    padding: 10,
+    padding: 20,
     borderRadius: 5,
-    marginTop: 10,
+    marginTop: 20,
     alignItems: 'center',
   },
   buttonText: {

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, StyleSheet, ScrollView, Alert } from 'react-native';
 import axios from 'axios';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const TowRequirementForm = () => {
+  const navigation = useNavigation();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [vehicleModel, setVehicleModel] = useState('');
@@ -10,6 +13,10 @@ const TowRequirementForm = () => {
   const [towReason, setTowReason] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
   const [destination, setDestination] = useState('');
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  };
 
   const handleSubmit = async () => {
     try {
@@ -58,6 +65,10 @@ const TowRequirementForm = () => {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
 
       <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+        <Ionicons name="chevron-back-circle" size={40} color="black" />
+      </TouchableOpacity>
+
         <Text style={styles.heading}>Tow Requirement Form</Text>
         <View style={styles.formContainer}>
           <View style={styles.formRow}>
@@ -144,10 +155,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'linear-gradient(to right, #d1defb, rgb(239, 232, 255))'
   },
+  backButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    zIndex: 1, // Ensure the back button appears above other content
+  },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    marginTop: 60,
   },
   formContainer: {
     backgroundColor: '#fff', // White background color for the form container
@@ -176,7 +194,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 5,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 20,
     width: '100%',
   },
   buttonText: {

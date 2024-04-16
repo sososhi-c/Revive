@@ -3,8 +3,11 @@ import { View, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView, TextInp
 import axios from 'axios';
 import BatteryPicker from '../BatteryPicker';
 import { Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const FuelRequirementForm = () => {
+  const navigation = useNavigation();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [vehicleModel, setVehicleModel] = useState('');
@@ -12,6 +15,10 @@ const FuelRequirementForm = () => {
   const [fuelAmount, setFuelAmount] = useState('');
   const [fuelType, setFuelType] = useState(null);
   const [currentLocation, setCurrentLocation] = useState('');
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  };
 
   const handleFormSubmit = async () => {
     try {
@@ -66,6 +73,10 @@ const FuelRequirementForm = () => {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
 
       <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+        <Ionicons name="chevron-back-circle" size={40} color="black" />
+      </TouchableOpacity>
+
         <Text style={styles.heading}>Fuel Service Form</Text>
         <View style={styles.formContainer}>
           <View style={styles.formRow}>
@@ -154,11 +165,18 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
     backgroundColor: 'linear-gradient(to right, #d1defb, rgb(239, 232, 255))',
   },
+  backButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    zIndex: 1, // Ensure the back button appears above other content
+  },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    marginTop: 60,
   },
   formContainer: {
     backgroundColor: '#fff', // White background color for the form container
@@ -184,7 +202,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#5e60ce',
     padding: 20,
     borderRadius: 5,
-    marginTop: 10,
+    marginTop: 20,
     alignItems: 'center',
   },
   buttonText: {

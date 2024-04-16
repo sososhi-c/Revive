@@ -178,15 +178,15 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 20,
-    left: 10,
+    top: 60,
+    left: 20,
     zIndex: 1, // Ensure the back button appears above other content
   },
   startText: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 30,
-    marginTop: '18%',
+    marginTop: '34%',
     marginBottom: '2%'
   },
   createText: {
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black', // Black border
     borderRadius: 50,
-    marginTop: '7%',
+    marginTop: '15%',
     backgroundColor: 'white', // White color inside the container
   },
   registerText: {

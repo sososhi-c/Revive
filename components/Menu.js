@@ -37,6 +37,11 @@ const Menu = ({ isOpen, toggleMenu }) => {
     navigation.navigate('Feedback'); // Navigate to the About Us page
   };
 
+  const navigateToPayment = () => {
+    closeMenu(); // Close menu before navigating
+    navigation.navigate('Payment'); // Navigate to the About Us page
+  };
+
   const navigateToAboutUs = () => {
     closeMenu(); // Close menu before navigating
     navigation.navigate('AboutUsPage'); // Navigate to the About Us page
@@ -64,6 +69,7 @@ const Menu = ({ isOpen, toggleMenu }) => {
           <TouchableOpacity style={styles.closeButton} onPress={closeMenu}>
             <MaterialCommunityIcons name="close" size={24} color="black" />
           </TouchableOpacity>
+
           <View style={styles.menuItemsContainer}>
 
             <TouchableOpacity style={styles.menuItem} onPress={navigateToServices}>
@@ -81,13 +87,18 @@ const Menu = ({ isOpen, toggleMenu }) => {
               <Text style={styles.menuItemText}>Feedback</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity style={styles.menuItem} onPress={navigateToPayment}>
+              <MaterialIcons name="payment" size={24} color="black" />
+              <Text style={styles.menuItemText}>Payment</Text>
+            </TouchableOpacity>
+
             <TouchableOpacity style={styles.menuItem} onPress={navigateToAboutUs}>
               <AntDesign name="infocirlce" size={24} color="black" />
               <Text style={styles.menuItemText}>About Us</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.menuItem} onPress={navigateToContactUs}>
-            <MaterialIcons name="contact-mail" size={24} color="black" />
+              <MaterialIcons name="contact-mail" size={24} color="black" />
               <Text style={styles.menuItemText}>Contact Us</Text>
             </TouchableOpacity>
 
@@ -113,6 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    marginTop: 40,
   },
   menuContent: {
     backgroundColor: '#ffffff',
@@ -130,11 +142,11 @@ const styles = StyleSheet.create({
     right: 10,
   },
   menuItemsContainer: {
-    marginTop: 40,
+    marginTop: 30,
   },
   menuItem: {
     flexDirection: 'row',
-    paddingVertical: 15,
+    paddingVertical: 25,
     borderBottomWidth: 1,
     borderBottomColor: '#ced4da',
   },
@@ -145,7 +157,7 @@ const styles = StyleSheet.create({
     marginLeft: 20, // Adjust as needed
   },
   logoutButton: {
-    marginTop: '50%',
+    marginTop: '25%',
     alignItems: 'center'
   },
   btn: {

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 const ContactPage = () => {
+  const navigation = useNavigation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [text, setText] = useState('');
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  };
 
   const handleSend = async () => {
     try {
@@ -23,8 +30,8 @@ const ContactPage = () => {
       Alert.alert('Success', 'Message submitted successfully', [{ text: 'Okay' }]);
       // clear the fields
       setEmail(''),
-      setName(''),
-      setText('')
+        setName(''),
+        setText('')
 
       console.log(data);
     } catch (error) {
@@ -40,6 +47,9 @@ const ContactPage = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton} >
+        <Ionicons name="chevron-back-circle" size={40} color="white" />
+      </TouchableOpacity>
       <Text style={styles.heading}>Get in touch</Text>
       <TextInput
         placeholder="Name"
@@ -88,13 +98,18 @@ const styles = StyleSheet.create({
     borderTopColor: '#001925',
     borderColor: '#ff7a01'
   },
+  backButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    zIndex: 1, // Ensure the back button appears above other content
+  },
   heading: {
     color: '#ff7a01',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 40,
-    marginTop: 70,
-
+    marginTop: 130,
   },
   input: {
     backgroundColor: '#013747', // Add this line
@@ -108,7 +123,7 @@ const styles = StyleSheet.create({
     height: 150,
     textAlignVertical: 'top',
     backgroundColor: '#013747', // Add this line
-  borderColor: 'transparent', 
+    borderColor: 'transparent',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -138,7 +153,7 @@ const styles = StyleSheet.create({
     color: '#001925',
     fontWeight: 'bold',
   },
-  buttonResetText:{
+  buttonResetText: {
     color: '#ff7a01',
     fontWeight: 'bold',
   }

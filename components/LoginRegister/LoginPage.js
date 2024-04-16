@@ -127,11 +127,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#010a30', // dark blue color
+        backgroundColor: '#010a30', // dark blue color,
     },
     backButton: {
         position: 'absolute',
-        top: 30,
+        top: 60,
         left: 20,
         zIndex: 1, // Ensure the back button appears above other content
     },
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 30,
-        marginTop: '22%',
+        marginTop: '34%',
         marginBottom: '2%'
     },
     createText: {
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black', // Black border
         borderRadius: 50,
-        marginTop: '11%',
+        marginTop: '20%',
         backgroundColor: 'white', // White color inside the container
     },
     registerText: {

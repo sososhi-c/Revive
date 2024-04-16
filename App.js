@@ -21,6 +21,7 @@ import FuelHistory from './components/History/FuelHistory.js';
 import BatteryHistory from './components/History/BatteryHistory.js';
 import Feedback from './components/Feedback.js';
 import ContactPage from './components/ContactPage.js';
+import Payment from './components/Payment.js';
 
 const Stack = createStackNavigator();
 
@@ -54,23 +55,24 @@ const App = () => {
           />
           <Stack.Screen name="Menu" component={Menu} options={{ headerTitle: '' }} />
           <Stack.Screen name="FrontScreen" component={FrontPage} options={{ headerTitle: '' }} />
-          <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerTitle: '' }} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerTitle: '' }} />
-          <Stack.Screen name="AboutUsPage" component={AboutUsPage} options={{ headerTitle: '' }} />
-          <Stack.Screen name="HistoryPage" component={HistoryPage} options={{ headerTitle: '' }} />
-          <Stack.Screen name="Feedback" component={Feedback} options={{ headerTitle: '' }} />
-          <Stack.Screen name="ContactPage" component={ContactPage} options={{ headerTitle: '' }} />
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="AboutUsPage" component={AboutUsPage} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="HistoryPage" component={HistoryPage} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="Feedback" component={Feedback} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="ContactPage" component={ContactPage} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="Payment" component={Payment}  options={{ headerTitle: '', headerShown: false }} />
 
-          <Stack.Screen name="BatteryRequirementForm" component={BatteryRequirementForm} options={{ headerTitle: '' }} />
-          <Stack.Screen name="FuelRequirementForm" component={FuelRequirementForm} options={{ headerTitle: '' }} />
-          <Stack.Screen name="TowRequirementForm" component={TowRequirementForm} options={{ headerTitle: '' }} />
-          <Stack.Screen name="TyreReplacementForm" component={TyreReplacementForm} options={{ headerTitle: '' }} />
-          <Stack.Screen name="ServicesPage" component={ServicesPage}  options={{ headerTitle: '' }} />
+          <Stack.Screen name="BatteryRequirementForm" component={BatteryRequirementForm} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="FuelRequirementForm" component={FuelRequirementForm} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="TowRequirementForm" component={TowRequirementForm} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="TyreReplacementForm" component={TyreReplacementForm} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="ServicesPage" component={ServicesPage}  options={{ headerTitle: '', headerShown: false }} />
 
-          <Stack.Screen name="BatteryHistory" component={BatteryHistory} options={{ headerTitle: '' }} />
-          <Stack.Screen name="FuelHistory" component={FuelHistory} options={{ headerTitle: '' }} />
-          <Stack.Screen name="TowHistory" component={TowHistory} options={{ headerTitle: '' }} />
-          <Stack.Screen name="TyreHistory" component={TyreHistory} options={{ headerTitle: '' }} />
+          <Stack.Screen name="BatteryHistory" component={BatteryHistory} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="FuelHistory" component={FuelHistory} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="TowHistory" component={TowHistory} options={{ headerTitle: '', headerShown: false }} />
+          <Stack.Screen name="TyreHistory" component={TyreHistory} options={{ headerTitle: '', headerShown: false }} />
 
         </Stack.Navigator>
       )}
