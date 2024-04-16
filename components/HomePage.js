@@ -4,6 +4,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Dimensions, ScrollView, Image
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Carousel from 'react-native-snap-carousel'; // Import Carousel component
 import ServiceCard from './ServiceCard';
+
 import Menu from './Menu';
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,6 +18,7 @@ import Corousel1 from '../assets/1.webp'
 import Corousel2 from '../assets/2.avif'
 import Corousel3 from '../assets/3.jpeg'
 import Corousel4 from '../assets/4.jpeg'
+import Reviews from './Reviews';
 
 
 
@@ -77,6 +79,11 @@ const HomePage = () => {
 
         {/* Menu */}
         <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
+
+
+        {/* Add review section here */}
+        <Reviews />
+
 
         {/* Service Cards */}
         <View style={styles.serviceContainer}>
