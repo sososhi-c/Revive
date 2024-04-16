@@ -26,4 +26,15 @@ router.post('/fueldetails', async (req, res) => {
       }
 });
 
+
+router.get("/getFuelHistory", async (req, res) => {
+  try {
+      const history = await FuelDetailsModel.find({ status: { $ne: '' } });
+      res.json(history);
+  } catch (error) {
+      console.error("Error fetching fuel history:", error);
+      res.status(500).json({ error: "An error occurred while fetching fuel history." });
+  }
+});
+
 module.exports = router;

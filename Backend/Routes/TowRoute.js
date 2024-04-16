@@ -25,5 +25,14 @@ router.post("/submitForm", async (req, res) => {
   }
 });
 
+router.get("/getTowHistory", async (req, res) => {
+  try {
+      const history = await TowDetailsModel.find({ status: { $ne: '' } });
+      res.json(history);
+  } catch (error) {
+      console.error("Error fetching Tow history:", error);
+      res.status(500).json({ error: "An error occurred while fetching Tow history." });
+  }
+});
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const BatteryDetailsModel = require("../Models/BatteryModel");
+const User = require("../Models/UserModel");
 
 router.post("/submitBatteryForm", async (req, res) => {
     try {
@@ -25,5 +26,16 @@ router.post("/submitBatteryForm", async (req, res) => {
         res.status(500).json({ error: "An error occurred while saving form data." });
     }
 });
+
+router.get("/getBatteryHistory", async (req, res) => {
+    try {
+        const history = await BatteryDetailsModel.find({ status: { $ne: '' } });
+        res.json(history);
+    } catch (error) {
+        console.error("Error fetching battery history:", error);
+        res.status(500).json({ error: "An error occurred while fetching battery history." });
+    }
+});
+
 
 module.exports = router;

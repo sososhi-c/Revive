@@ -48,10 +48,10 @@ const Card = ({ title, subtitle, screen }) => {
 const HistoryPage = () => {
   return (
     <View style={styles.container}>
-      <Card title="View Fuel History" subtitle="Vivamus nisi purus"  screen="FuelHistory" />
-      <Card title="View Battery History" subtitle="Vivamus nisi purus"  screen="BatteryHistory" />
-      <Card title="View Tow History" subtitle="Vivamus nisi purus"  screen="TowHistory" />
-      <Card title="View Tyre History" subtitle="Vivamus nisi purus"  screen="TyreHistory" />
+      <Card title="View Fuel History" subtitle="All fuel requests"  screen="FuelHistory" />
+      <Card title="View Battery History" subtitle="All battery requests"  screen="BatteryHistory" />
+      <Card title="View Tow History" subtitle="All tow requests"  screen="TowHistory" />
+      <Card title="View Tyre History" subtitle="All tyre requests"  screen="TyreHistory" />
     </View>
   );
 };
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
+    backgroundColor: '#ffd6ff'
   },
   cardContainer: {
     marginBottom: 30,
